@@ -1,0 +1,104 @@
+section.app__component.app__component--portfolio(class='{{ view == "portfolio" ? "show": "hide" }}')
+    h3.app__component__subtitle(ng-show='currentUser.transactions.open[0]') Open Transactions
+    table.app__component--portfolio__transactions(ng-show='currentUser.transactions.open[0]')
+      tr.app__component--portfolio__transactions__transaction(ng-init='openSort = "symbol"')
+        th(ng-click='openSort = openSort == "symbol" ? "-symbol" : "symbol"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "symbol"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-symbol"')
+          span Symbol
+        th(ng-click='openSort = openSort == "name" ? "-name" : "name"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "name"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-name"')
+          span Name
+        th(ng-click='openSort = openSort == "price.open" ? "-price.open" : "price.open"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "price.open"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-price.open"')
+          span Open Price
+        th(ng-click='openSort = openSort == "price.close" ? "-price.close" : "price.close"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "price.close"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-price.close"')
+          span Current Price
+        th(ng-click='openSort = openSort == "shares" ? "-shares" : "shares"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "shares"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-shares"')
+          span Shares
+        th(ng-click='openSort = openSort == "costBasis" ? "-costBasis" : "costBasis"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "costBasis"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-costBasis"')
+          span Cost Basis
+        th(ng-click='openSort = openSort == "marketValue" ? "-marketValue" : "marketValue"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "marketValue"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-marketValue"')
+          span Market Value
+        th(ng-click='openSort = openSort == "estimatedGain" ? "-estimatedGain" : "estimatedGain"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "estimatedGain"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-estimatedGain"')
+          span Estimated Gain
+        th(ng-click='openSort = openSort == "estimatedGainPercent" ? "-estimatedGainPercent" : "estimatedGainPercent"')
+          i.ion.ion-arrow-down-a(ng-show='openSort == "estimatedGainPercent"')
+          i.ion.ion-arrow-up-a(ng-show='openSort == "-estimatedGainPercent"')
+          span Estimated Gain %
+        th
+      tr.app__component--portfolio__transactions__transaction(ng-repeat='transaction in currentUser.transactions.open | orderBy : openSort')
+        td(ng-repeat='quote in concat( quotesFTSE, quotesNASDAQ ) | filter : transaction.symbol',
+           ng-init='transaction.price.close = quote.l; transaction.costBasis = transaction.price.open * transaction.shares; transaction.marketValue = quote.l * transaction.shares; transaction.estimatedGain = transaction.marketValue - transaction.costBasis; transaction.estimatedGainPercent = transaction.estimatedGain / transaction.costBasis * 100', style='display: none')
+        td {{ transaction.symbol }}
+        td {{ transaction.name }}
+        td {{ transaction.price.open | number: 2 }}
+        td {{ transaction.price.close | number: 2  }}
+        td {{ transaction.shares }}
+        td {{ transaction.costBasis | number : 2 }}  
+        td {{ transaction.marketValue | number : 2 }}      
+        td(ng-class='transaction.estimatedGain >= 0 ? "profit" : "loss"') {{ transaction.estimatedGain | number : 2 }} USD
+        td(ng-class=' transaction.estimatedGainPercent >= 0 ? "profit" : "loss"') {{  transaction.estimatedGainPercent | number : 2 }} %
+        td.sell(ng-click='sell($index)') Sell
+
+    h3.app__component__subtitle Closed Transactions
+    table.app__component--portfolio__transactions
+      tr.app__component--portfolio__transactions__transaction(ng-init='closedSort = "symbol"')
+        th(ng-click='closedSort = closedSort == "symbol" ? "-symbol" : "symbol"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "symbol"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-symbol"')
+          span Symbol
+        th(ng-click='closedSort = closedSort == "name" ? "-name" : "name"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "name"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-name"')
+          span Name
+        th(ng-click='closedSort = closedSort == "price.open" ? "-price.open" : "price.open"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "price.open"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-price.open"')
+          span Open Price
+        th(ng-click='closedSort = closedSort == "price.close" ? "-price.close" : "price.close"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "price.close"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-price.close"')
+          span Closed Price
+        th(ng-click='closedSort = closedSort == "shares" ? "-shares" : "shares"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "shares"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-shares"')
+          span Shares
+        th(ng-click='closedSort = closedSort == "costBasis" ? "-costBasis" : "costBasis"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "costBasis"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-costBasis"')
+          span Cost Basis
+        th(ng-click='closedSort = closedSort == "marketValue" ? "-marketValue" : "marketValue"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "marketValue"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-marketValue"')
+          span Market Value
+        th(ng-click='closedSort = closedSort == "gain" ? "-gain" : "gain"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "gain"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-gain"')
+          span Gain
+        th(ng-click='closedSort = closedSort == "gainPercent" ? "-gainPercent" : "gainPercent"')
+          i.ion.ion-arrow-down-a(ng-show='closedSort == "gainPercent"')
+          i.ion.ion-arrow-up-a(ng-show='closedSort == "-gainPercent"')
+          span Gain %
+      tr.app__component--portfolio__transactions__transaction(ng-repeat='transaction in currentUser.transactions.closed | orderBy : closedSort')
+        td {{ transaction.symbol }}
+        td {{ transaction.name }}
+        td {{ transaction.price.open | number: 2 }}
+        td {{ transaction.price.close | number: 2 }}
+        td {{ transaction.shares }}
+        td(ng-init='transaction.costBasis = transaction.price.open * transaction.shares') {{ transaction.costBasis | number : 2 }}
+        td(ng-init='transaction.marketValue = transaction.price.close * transaction.shares') {{ transaction.marketValue | number : 2 }}
+        td(ng-init='transaction.gain = transaction.marketValue - transaction.costBasis', ng-class='transaction.gain >= 0 ? "profit" : "loss"') {{ transaction.gain | number : 2 }} USD
+        td(ng-init='transaction.gainPercent = (transaction.gain / transaction.costBasis ) * 100', ng-class='transaction.gainPercent >= 0 ? "profit" : "loss"') {{ transaction.gainPercent | number : 2 }} %
