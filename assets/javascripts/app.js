@@ -31,7 +31,7 @@
     .module('app', ['ngResource', 'firebase'])
 
     /** Initialisation of Angular's controller, $scope is passed as default, $resource is used to query Google's finance API to get real time data, $http is used to query Quandl EOD to get historic data.*/
-    .controller('ctrl', ['$scope', '$firebaseObject', '$resource', '$http', function($scope, $firebaseObject, $resource, $http) {
+    .controller('ctrl', ['$scope', '$firebaseObject', '$firebaseAuth', '$resource', '$http', function($scope, $firebaseObject, $firebaseAuth, $resource, $http) {
 
       let
         rootRef = firebase.database().ref(),
@@ -42,6 +42,53 @@
       syncObject.$bindTo($scope, "currentUser");
 
       $scope.currentUser = $firebaseObject(ref);
+
+      $scope.signUp = function() {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword($scope.email, $scope.password)
+          .catch(function(error) {
+
+            let errorCode = error.code;
+
+            $scope.errorMessage = error.message;
+
+            console.error(error.code);
+            console.error(error.message);
+
+        });
+      };
+
+      $scope.logIn = function() {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword($scope.email, $scope.password)
+          .then(function() {
+            $scope.user = firebase.auth().currentUser.providerData[0];
+            $scope.$apply();
+            console.log($scope.user);
+
+            console.log("Sign-in provider: "+$scope.user.providerId);
+            console.log("  Provider-specific UID: "+$scope.user.uid);
+            console.log("  Name: "+$scope.user.displayName);
+            console.log("  Email: "+$scope.user.email);
+            console.log("  Photo URL: "+$scope.user.photoURL);
+
+          })
+          .catch(function(error) {
+
+            let errorCode = error.code;
+
+            $scope.errorMessage = error.message;
+            $scope.$apply();
+
+            console.error(error.code);
+            console.error(error.message);
+
+        });
+      };
+
+
 
       // Uncomment only for testing purposes
       // syncObject.$loaded()

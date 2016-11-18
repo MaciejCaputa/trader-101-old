@@ -120,13 +120,36 @@ h4
           margin: 0
           line-height: 1em
           color: #FAFAFA
-        &__title, &__icon, &__subtitle
+        &__title
+          // , &__icon, &__subtitle
           @media(max-width: 480px)
             display: none
         &__icon
           color: rgba(255,255,255,0.7)
           margin: auto 0.5em
           font-size: 1.66em
+
+
+      &__log-in
+        &__input, &__button
+          border: none
+          border-radius: 2px
+          margin: 0.5em
+          padding: 2px 1ch
+          line-height: 2em
+          outline: none
+        &__input
+
+        &__button
+          cursor: pointer
+
+        &__message
+          position: absolute
+
+
+
+
+
       &__profile
         display: flex
         align-items: center

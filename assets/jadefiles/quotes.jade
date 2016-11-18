@@ -1,6 +1,8 @@
 // Quotes of FTSE and NASDAQ companies.
 section.app__component.app__component--quotes(class='{{view == "quotes" ? "show" : "hide"}}')
 
+  pre {{ user | json }}
+  
   // Settings bar
   .app__component--quotes__settings(ng-init='layout = "apps-layout"')
   

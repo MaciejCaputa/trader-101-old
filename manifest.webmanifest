@@ -2,25 +2,18 @@
   "lang": "en",
   "dir": "ltr",
   "name": "Trader 101",
-  "description": "The ultimate futuristic racing game from the future!",
+  "description": "",
   "short_name": "Trader 101",
   "icons": [{
-    "src": "icon/lowres.webp",
-    "sizes": "64x64",
-    "type": "image/webp"
+    "src": "assets/images/logo.svg"
   },{
-    "src": "icon/lowres.png",
-    "sizes": "64x64"
-  }, {
-    "src": "icon/hd_hi",
-    "sizes": "128x128"
+    "src": "assets/images/logo.png"
   }],
-  "scope": "/",
-  "start_url": "/",
+  "start_url": ".",
   "display": "fullscreen",
   "orientation": "landscape",
-  "theme_color": "aliceblue",
-  "background_color": "red",
+  "theme_color": "#455A64",
+  "background_color": "#455A64",
   "screenshots": [{
     "src": "screenshots/in-game-1x.jpg",
     "sizes": "640x480",
