@@ -46,13 +46,18 @@ gulp.task('stylesheets', function() {
 });
 
 gulp.task('javascripts', function() {
-  return gulp.src(['./assets/javascripts/*.js'])
+  return gulp.src([
+      './assets/javascripts/config.js',
+      './assets/javascripts/factory.js',
+      './assets/javascripts/app.js',
+      './assets/javascripts/graph.js'
+    ])
     .pipe(babel({
           presets: ['es2015']
       }))
-    // .pipe(concat('app.min.js'))
-    // .pipe(gulp.dest('js'))
-    .pipe(uglify())
+    .pipe(concat('app.min.js'))
+    .pipe(gulp.dest('./_site/assets/'))
+    // .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./_site/assets/'));
 });

@@ -25,19 +25,18 @@ section.app__component.app__component--quotes(class='{{view == "quotes" ? "show"
     .app__component--quotes__settings__sort
       .item Sort by
       .items
-        .item(ng-click='sort = sort == "t" ? "-t": "t"')
-          div(ng-class='(sort == "t" || sort == "-t") && "active"') Company
-        .item(ng-click='sort = sort == "-cp" ? "cp": "-cp"')
-          div(ng-class='(sort == "cp" || sort == "-cp") && "active"') Gain %
+        .item(ng-click='sort = sort == "t" ? "-symbol": "symbol"')
+          div(ng-class='(sort == "symbol" || sort == "-symbol") && "active"') Company
+        .item(ng-click='sort = sort == "-change" ? "change": "-change"')
+          div(ng-class='(sort == "change" || sort == "-change") && "active"') Change
+        .item(ng-click='sort = sort == "-changePercent" ? "changePercent": "-changePercent"')
+          div(ng-class='(sort == "changePercent" || sort == "-changePercent") && "active"') Change %
     
   // Cards with stock quotes of companies, which are sorted by company code by default.
-  .app__component--quotes__companies(class='{{ layout }}', ng-init='sort = "t"')     
+  .app__component--quotes__companies(class='{{ layout }}', ng-init='sort = "symbol"')     
 
     // Iterating through each company in FTSE and NASDAQ stock markets.
-    .quote(ng-repeat='quote in quotes | filter : search | orderBy : sort track by $index', ng-click='getCompany(quote.t)')
-    
-      // A swifty trick to get full name of a company.
-      div(ng-init='quote.companyName = NASDAQ.hasOwnProperty(quote.t) ? NASDAQ[ quote.t ] : FTSE[ quote.t ]', style='display: none')
+    .quote(ng-repeat='quote in quotes | filter : search | orderBy : sort track by $index', ng-click='getCompany(quote.symbol)')
       
       // Compnay's stock code.
       .company-symbol.t {{ quote.symbol }} 
@@ -47,19 +46,19 @@ section.app__component.app__component--quotes(class='{{view == "quotes" ? "show"
       
       // Arrow, quote, and currency.
       .l
-         .ion.ion-arrow-up-a(ng-if='quote.cp > 0')
-         .ion.ion-arrow-down-a(ng-if='quote.cp < 0')
-         .ion.ion-arrow-right-a(ng-if='quote.cp == 0')
+         .ion.ion-arrow-up-a(ng-if='quote.change > 0')
+         .ion.ion-arrow-down-a(ng-if='quote.change < 0')
+         .ion.ion-arrow-right-a(ng-if='quote.change == 0')
          span {{ quote.level | number : 2 }}
-         span.unit  {{ quote.e == 'LON' ? 'GPB' : 'USD' }}
+         span.unit  {{ quote.market == 'FTSE 100' ? 'GPB' : 'USD' }}
       
       // Change of a stock quote expressed in based curreny and percentage.
-      .flex(class='{{ quote.cp > 0 ? "rise" : quote.cp < 0 ? "loss": ""}}')
-        .c {{ quote.e == 'LON' ? quote.c / 100 : quote.c | number : 2 }}
-        .cp {{ quote.cp}}% 
+      .flex(class='{{ quote.change > 0 ? "rise" : quote.change < 0 ? "loss": ""}}')
+        .c {{ quote.change }}
+        .cp {{ quote.changePercent }}% 
       
       .lt
         // Time when the quote was last registered on a market. Note that when market is closed there is nothing to be updated.
-        span {{ quote.lt }}
+        span {{ quote.timestamp | date : 'MMM d, yyyy h:mm a' }}
         // Stock market symbol: either FTSE 100 (UK) or NASDAQ 100 (USA). Note that FTSE is also refered as LON by some institutions.
-        span {{ quote.e == 'LON' ? 'FTSE 100' : 'NASDAQ 100' }}
+        span {{ quote.market }}
