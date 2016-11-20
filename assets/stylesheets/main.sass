@@ -1,6 +1,7 @@
 
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500'
 @import 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'
+@import 'vars'
 
 // --- Variables ---
 
@@ -16,7 +17,9 @@ $bg-body: #F5F5F5
 $font-body: 'Roboto', sans-serif
 $font-headers: 'Roboto', sans-serif
 $shadow-card: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
-$shadow-card--hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+$box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+$shadow-card--hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px
+$box-shadow--hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
 $transition-card: all 300ms ease-in-out
 $height-card: 11em
 $border-radius-card: 2px
@@ -596,7 +599,30 @@ h4
       //TODO
     &--settings
       // TODO
-
+    &--register
+      display: flex
+      align-items: center
+      justify-content: center
+      min-height: 100vh
+      &__form
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-around
+        box-shadow: $box-shadow
+        max-width: 500px
+        padding: 1em
+        background: $grey-100
+        &__input, &__button
+          border: none
+          border-radius: 2px
+          margin: 0.5em
+          padding: 2px 1ch
+          line-height: 2em
+          outline: none
+          box-shadow: $box-shadow
+        &__input
+        &__button
 
 // --- Layout/Font Adjustements ---
 html

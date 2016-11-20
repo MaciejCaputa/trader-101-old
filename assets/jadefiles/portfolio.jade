@@ -1,6 +1,6 @@
 section.app__component.app__component--portfolio(class='{{ view == "portfolio" ? "show": "hide" }}')
-    h3.app__component__subtitle(ng-show='currentUser.transactions.open[0]') Open Transactions
-    table.app__component--portfolio__transactions(ng-show='currentUser.transactions.open[0]')
+    h3.app__component__subtitle(ng-show='user.transactions.open[0]') Open Transactions
+    table.app__component--portfolio__transactions(ng-show='user.transactions.open[0]')
       tr.app__component--portfolio__transactions__transaction(ng-init='openSort = "symbol"')
         th(ng-click='openSort = openSort == "symbol" ? "-symbol" : "symbol"')
           i.ion.ion-arrow-down-a(ng-show='openSort == "symbol"')
@@ -39,7 +39,7 @@ section.app__component.app__component--portfolio(class='{{ view == "portfolio" ?
           i.ion.ion-arrow-up-a(ng-show='openSort == "-estimatedGainPercent"')
           span Estimated Gain %
         th
-      tr.app__component--portfolio__transactions__transaction(ng-repeat='transaction in currentUser.transactions.open | orderBy : openSort')
+      tr.app__component--portfolio__transactions__transaction(ng-repeat='transaction in user.transactions.open | orderBy : openSort')
         td(ng-repeat='quote in concat( quotesFTSE, quotesNASDAQ ) | filter : transaction.symbol',
            ng-init='transaction.price.close = quote.l; transaction.costBasis = transaction.price.open * transaction.shares; transaction.marketValue = quote.l * transaction.shares; transaction.estimatedGain = transaction.marketValue - transaction.costBasis; transaction.estimatedGainPercent = transaction.estimatedGain / transaction.costBasis * 100', style='display: none')
         td {{ transaction.symbol }}
@@ -92,7 +92,7 @@ section.app__component.app__component--portfolio(class='{{ view == "portfolio" ?
           i.ion.ion-arrow-down-a(ng-show='closedSort == "gainPercent"')
           i.ion.ion-arrow-up-a(ng-show='closedSort == "-gainPercent"')
           span Gain %
-      tr.app__component--portfolio__transactions__transaction(ng-repeat='transaction in currentUser.transactions.closed | orderBy : closedSort')
+      tr.app__component--portfolio__transactions__transaction(ng-repeat='transaction in user.transactions.closed | orderBy : closedSort')
         td {{ transaction.symbol }}
         td {{ transaction.name }}
         td {{ transaction.price.open | number: 2 }}

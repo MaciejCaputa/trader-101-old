@@ -34,23 +34,23 @@ section.app__component.app__component--quotes(class='{{view == "quotes" ? "show"
   .app__component--quotes__companies(class='{{ layout }}', ng-init='sort = "t"')     
 
     // Iterating through each company in FTSE and NASDAQ stock markets.
-    .quote(ng-repeat='quote in concat( quotesFTSE, quotesNASDAQ ) | filter : search | orderBy : sort', ng-click='getCompany(quote.t)')
+    .quote(ng-repeat='quote in quotes | filter : search | orderBy : sort track by $index', ng-click='getCompany(quote.t)')
     
       // A swifty trick to get full name of a company.
       div(ng-init='quote.companyName = NASDAQ.hasOwnProperty(quote.t) ? NASDAQ[ quote.t ] : FTSE[ quote.t ]', style='display: none')
       
       // Compnay's stock code.
-      .company-symbol.t {{ quote.t }} 
+      .company-symbol.t {{ quote.symbol }} 
       
       // Full name of a company.
-      .company-name {{ normaliseCompanyName( quote.companyName ) }}
+      .company-name {{ quote.name }}
       
       // Arrow, quote, and currency.
       .l
          .ion.ion-arrow-up-a(ng-if='quote.cp > 0')
          .ion.ion-arrow-down-a(ng-if='quote.cp < 0')
          .ion.ion-arrow-right-a(ng-if='quote.cp == 0')
-         span {{ quote.e == 'LON' ? quote.l.replace(',','') / 100 : quote.l | number : 2 }}
+         span {{ quote.level | number : 2 }}
          span.unit  {{ quote.e == 'LON' ? 'GPB' : 'USD' }}
       
       // Change of a stock quote expressed in based curreny and percentage.

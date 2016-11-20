@@ -12,18 +12,18 @@ header.app__header
       
       
     .app__header__inner__log-in(ng-show='!user')
-      input.app__header__inner__log-in__input(ng-model='email', type='text')
-      input.app__header__inner__log-in__input(ng-model='password', type='password')
+      input.app__header__inner__log-in__input(ng-model='login.email', type='text')
+      input.app__header__inner__log-in__input(ng-model='login.password', type='password')
       button.app__header__inner__log-in__button(ng-click='logIn()') Log In
-      button.app__header__inner__log-in__button(ng-click='view = "quotes"') Sign Up
+      button.app__header__inner__log-in__button(ng-click='view = "register"') Sign Up
       .app__header__inner__log-in__message {{ errorMessage }}
       
     .app__header__inner__profile(ng-show='user')
     
       .app__header__inner__profile__greeting
-        span Hi, {{ currentUser.name }}!
+        span Hi, {{ user.name }}!
         br
-        span Your balance: ${{ currentUser.balance }}.
+        span Your balance: ${{ user.balance }}.
       
       .app__header__inner__profile__avatar
-        img.app__header__inner__profile__avatar__img(ng-src='{{ currentUser.avatar }}')
+        img.app__header__inner__profile__avatar__img(ng-src='{{ user.avatar }}')
