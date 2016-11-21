@@ -28,9 +28,9 @@ const
 
 
 gulp.task('jadefiles', function() {
-    return gulp.src(['./index.jade'])
+    return gulp.src(['./**/*.jade'])
     .pipe(jade())
-    .pipe(gulp.dest('./_site'));
+    .pipe(gulp.dest('_site/'));
 });
 
 gulp.task('stylesheets', function() {
@@ -42,24 +42,25 @@ gulp.task('stylesheets', function() {
   .pipe(cssmin())
   .pipe(rename({suffix: '.min'}))
   .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-  .pipe(gulp.dest('./_site/assets/'));
+  .pipe(gulp.dest('./_site/assets/stylesheets'));
 });
 
 gulp.task('javascripts', function() {
   return gulp.src([
       './assets/javascripts/config.js',
-      './assets/javascripts/factory.js',
+      './assets/javascripts/factories.js',
       './assets/javascripts/app.js',
+      './assets/javascripts/components.js',
       './assets/javascripts/graph.js'
     ])
     .pipe(babel({
           presets: ['es2015']
       }))
     .pipe(concat('app.min.js'))
-    .pipe(gulp.dest('./_site/assets/'))
+    .pipe(gulp.dest('./_site/assets/javascripts'))
     // .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('./_site/assets/'));
+    .pipe(gulp.dest('./_site/assets/javascripts'));
 });
 
 gulp.task('images', function() {

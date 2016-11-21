@@ -1,6 +1,6 @@
 
 angular
-  .module('app', ['app.factory'])
+  .module('app', ['app.factories', 'app.components'])
 
   .controller('ctrl', ['$scope', '$http', 'apiRealTimeQuotes', function($scope, $http, apiRealTimeQuotes) {
 
@@ -28,106 +28,7 @@ angular
     $scope.NASDAQ = config.NASDAQ;
     $scope.FTSE = config.FTSE;
 
-    $scope.signUp = function() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword($scope.signup.email, $scope.signup.password)
-        .then(() => {
-          firebase
-            .auth()
-            .currentUser
-            .updateProfile({
-              displayName: `${$scope.signup.firstName} ${$scope.signup.lastName}`,
-              photoURL: 'https://maciejcaputa.com/assets/images/thumbnail-face.jpg'
-            })
-            .then(() => {
-              firebase
-                .database()
-                .ref(`users/${firebase.auth().currentUser.uid}`)
-                .set({
-                  firstName: $scope.signup.firstName,
-                  lastName: $scope.signup.lastName,
-                  name: `${$scope.signup.firstName} ${$scope.signup.lastName}`,
-                  email: $scope.signup.email,
-                  avatar: 'https://maciejcaputa.com/assets/images/thumbnail-face.jpg',
-                  balance: 10000,
-                  transactions: {
-                    open: [
-                      {
-                        symbol: "AAPL",
-                        name: "Apple Inc.",
-                        price: {
-                          open: 113.05
-                        },
-                        shares: 90,
-                        date: ""
-                      },
-                      {
-                        symbol: "GOOGL",
-                        name: "Alphabet Inc Class A",
-                        price: {
-                          open: 801.23
-                        },
-                        shares: 12,
-                        date: ""
-                      },
-                      {
-                        symbol: "MSFT",
-                        name: "Microsoft Corp",
-                        price: {
-                          open: 57.96
-                        },
-                        shares: 175,
-                        date: ""
-                      }
-                    ],
-                    closed: [
-                      {
-                        symbol: "AMZN",
-                        name: "Amazon.com Inc.",
-                        price: {
-                          open: 737.61,
-                          close: 844.36
-                        },
-                        shares: 10,
-                        date: "",
-                      },
-                      {
-                        symbol: "NFLX",
-                        name: "Netflix Inc.",
-                        price: {
-                          open: 82.79,
-                          close: 106.28
-                        },
-                        shares: 100,
-                        date: "",
-                      },
-                    ]
-                  }
-              });
-            })
-            .then(() => {
-              firebase
-                .database()
-                .ref(`/users/${firebase.auth().currentUser.uid}`)
-                .once('value')
-                .then((snapshot) => {
-                  $scope.user = snapshot.val();
-                  $scope.view = 'quotes';
-                  $scope.$apply();
-                  console.info('--- LOG IN SUCCEEDED ---');
-                  console.info($scope.user);
-                });
-            });
-        })
-        .catch((error) => {
-          $scope.signup.errorMessage = error.message;
-          $scope.$apply();
-          console.error('--- SIGN UP FAILED ---');
-          console.error(error.code);
-          console.error(error.message);
-      });
-    };
+
 
     $scope.logIn = function() {
       firebase

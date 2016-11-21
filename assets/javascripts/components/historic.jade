@@ -1,0 +1,24 @@
+// Component Historic
+.app__component.app__component--historic
+  // Exit button from a graph modal.
+  i.app__component--historic__exit.ion.ion-close(ng-click='$ctrl.company=null')
+
+  // Title of a graph.
+  h2.app__component--historic__name {{ company.name }}
+
+  // Choosing time span of a graph.
+  .app__component--historic__time-spans
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=7; $ctrl.getCompany()') Week
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=31; $ctrl.getCompany()') Month
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=62; $ctrl.getCompany()') 2 Months
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=186; $ctrl.getCompany()') 6 Months
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=365; $ctrl.getCompany()') 1 Year 
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=730; $ctrl.getCompany()') 2 Years 
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=1825; $ctrl.getCompany()') 5 Years 
+    button.app__component--historic__time-spans__btn(ng-click='$ctrl.timeSpan=3650; $ctrl.getCompany()') 10 Years
+
+  // Canvas of chart where graph will be plotted.
+  svg.app__component--historic__graph#visualisation
+
+  // Brief description of a company
+  p.app__component--historic__description {{ $ctrl.company.description }}

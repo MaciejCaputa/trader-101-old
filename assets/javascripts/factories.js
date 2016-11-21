@@ -1,6 +1,6 @@
 
 angular
-  .module('app.factory', [])
+  .module('app.factories', [])
   .factory('apiRealTimeQuotes', ['$http', function apiRealTimeQuotesFactory($http) {
 
     // Helper function to create combined queries to google's api.
