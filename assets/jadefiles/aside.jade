@@ -3,19 +3,19 @@ aside.app__aside
   
   .app__aside__items
   
-    .app__aside__items__item(ng-click='view = "feed"', class='{{view == "feed" ? "active" : ""}}')
+    .app__aside__items__item(ui-sref='feed', ui-sref-active='active')
       i.app__aside__items__item__icon.ion.ion-ios-pulse
       span.app__aside__items__item__title Feed
       
-    .app__aside__items__item(ng-click='view = "quotes"', class='{{view == "quotes" ? "active" : ""}}')
+    .app__aside__items__item(ui-sref='quotes', ui-sref-active='active')
       i.app__aside__items__item__icon.ion.ion-ios-list-outline
       span.app__aside__items__item__title Quotes
 
-    .app__aside__items__item(ng-click='view = "portfolio"', class='{{view == "portfolio" ? "active" : ""}}')
+    .app__aside__items__item(ui-sref='portfolio', ui-sref-active='active')
       i.app__aside__items__item__icon.ion.ion-grid
       span.app__aside__items__item__title Portfolio
 
-    .app__aside__items__item(ng-click='view = "settings"', class='{{view == "settings" ? "active" : ""}}')
+    .app__aside__items__item(ui-sref='settings', ui-sref-active='active')
       i.app__aside__items__item__icon.ion.ion-gear-a
       span.app__aside__items__item__title Settings
     

@@ -23,8 +23,12 @@ angular
     }
   })
 
-  .component('componentHistoric', {
-    templateUrl: 'assets/javascripts/components/historic.html',
+  .component('componentCompany', {
+    bindings: {
+      user: '=',
+      symbol: '='
+    },
+    templateUrl: 'assets/javascripts/components/company.html',
     controller: function() {
 
     }

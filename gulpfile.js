@@ -48,6 +48,7 @@ gulp.task('stylesheets', function() {
 gulp.task('javascripts', function() {
   return gulp.src([
       './assets/javascripts/config.js',
+      './assets/javascripts/app.states.js',
       './assets/javascripts/factories.js',
       './assets/javascripts/app.js',
       './assets/javascripts/components.js',

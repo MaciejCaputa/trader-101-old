@@ -1,6 +1,6 @@
 
 angular
-  .module('app', ['app.factories', 'app.components'])
+  .module('app', ['app.states', 'app.factories', 'app.components'])
 
   .controller('ctrl', ['$scope', '$http', 'apiRealTimeQuotes', function($scope, $http, apiRealTimeQuotes) {
 

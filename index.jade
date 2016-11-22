@@ -12,21 +12,26 @@ html(lang='en')
     include assets/jadefiles/header.jade
     include assets/jadefiles/aside.jade
 
+    // View
+    ui-view
+    //- div(ui-view)
+    
     // Components
-    component-feed(user='user', quotes='quotes', class='{{ view == "feed" ? "show": "hide" }}')
-
-    component-quotes(quotes='quotes', class='{{ view == "quotes" ? "show": "hide" }}')
-
-    component-historic(class='{{company ? "show-popup" : "hide"}}')
-
-    component-portfolio(user='user', quotes='quotes', class='{{ view == "portfolio" ? "show": "hide" }}')
-
-    component-settings(user='user', quotes='quotes', class='{{ view == "settings" ? "show": "hide" }}')
-
-    component-signup(user='user', class='{{ view == "signup" ? "show": "hide" }}')
+    //- component-feed(user='user', quotes='quotes', class='{{ view == "feed" ? "show": "hide" }}')
+    //- 
+    //- component-quotes(quotes='quotes', class='{{ view == "quotes" ? "show": "hide" }}')
+    //- 
+    //- component-historic(class='{{company ? "show-popup" : "hide"}}')
+    //- 
+    //- component-portfolio(user='user', quotes='quotes', class='{{ view == "portfolio" ? "show": "hide" }}')
+    //- 
+    //- component-settings(user='user', quotes='quotes', class='{{ view == "settings" ? "show": "hide" }}')
+    //- 
+    //- component-signup(user='user', class='{{ view == "signup" ? "show": "hide" }}')
 
     // Scripts
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js')
+    script(src='https://unpkg.com/angular-ui-router@0.3.2/release/angular-ui-router.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
     script(src='https://d3js.org/d3.v3.min.js')
     script(src='https://www.gstatic.com/firebasejs/3.5.2/firebase-app.js')

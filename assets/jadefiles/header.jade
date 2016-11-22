@@ -9,8 +9,6 @@ header.app__header
       i.app__header__inner__logo__icon.ion.ion-chevron-right
       h2.app__header__inner__logo__subtitle {{ view[0].toUpperCase() + view.substring(1).toLowerCase() }}
       
-      
-      
     .app__header__inner__log-in(ng-show='!user')
       input.app__header__inner__log-in__input(ng-model='login.email', type='text')
       input.app__header__inner__log-in__input(ng-model='login.password', type='password')
