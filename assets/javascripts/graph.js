@@ -5,7 +5,7 @@
 function plotGraph( historicData ) {
   // Declaring and initialising chart's variables.
 
-  $( '#visualisation').width( window.innerWidth );
+  $( '#visualisation').width( '80%' );
   // canvas.width = window.innerWidth;
 
   let
@@ -17,6 +17,8 @@ function plotGraph( historicData ) {
     xRange, yRange, xAxis, yAxis,
     lineData = [],
     lineFunc;
+
+    console.log(width);
 
   // Creating points which will be plotted on a grpah.
   for (let i = historicData.length - 1; i > 0; i--) {

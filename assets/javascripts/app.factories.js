@@ -82,4 +82,35 @@ angular
           var quotes = [].concat(quotesFTSE, quotesNASDAQ);
           return quotes;
         });
+  }])
+
+
+  .factory('ApiCompanyQuotes', ['$http', function ApiCompanyQuotesFactory($http) {
+    return {
+      get(symbol, timeSpan) {
+        let
+          market = config.NASDAQ[symbol] ? 'NASDAQ' : 'LON',
+          collapse = '';
+
+       // Choosing an appropriate collapse for uplled data.
+        if (timeSpan > 366) {
+          collapse = 'weekly';
+          timeSpan = Math.floor( timeSpan / 7 );
+        } else {
+          collapse = 'daily';
+        }
+        return (
+          $http({
+            method: 'GET',
+            url: `${config.quandlBaseUrl}${market}_${symbol}.json`,
+            params: {
+              api_key: config.quandlApiKey,
+              rows: timeSpan,
+              column_index: 4,
+              collapse: collapse
+            }
+          })
+        );
+      }
+    };
   }]);

@@ -49,9 +49,9 @@ gulp.task('javascripts', function() {
   return gulp.src([
       './assets/javascripts/config.js',
       './assets/javascripts/app.states.js',
-      './assets/javascripts/factories.js',
+      './assets/javascripts/app.factories.js',
       './assets/javascripts/app.js',
-      './assets/javascripts/components.js',
+      './assets/javascripts/app.components.js',
       './assets/javascripts/graph.js'
     ])
     .pipe(babel({

@@ -250,6 +250,7 @@ h4
     margin: 0 auto
     margin-top: 4em
     margin-left: 4em
+    width: 100%
     // transition: all 20ms ease-in-out
     &__title
       text-align: center
@@ -513,17 +514,9 @@ h4
 
 
     // Styling a grapn for a company.
-    &--historic
-      position: fixed
-      min-height: 100vh
-      //z-index: 1
-      background: #FAFAFA
-      opacity: 0.96
-      margin: 0 auto
-      padding: 1em
-      z-index: 1000
-      transition: all 300ms ease-in-out
-      overflow: hidden
+    &--company
+      #visualsiation
+        max-width: 100px !important
       &__exit
         position: absolute
         top: 2em
@@ -664,3 +657,7 @@ html
 // Ensuring that templates are hidden on page load
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-    ng-cloak
   display: none !important
+
+
+#visualisation
+  background: tomato
