@@ -1,17 +1,3 @@
-
-// var data          = require('gulp-data');
-// var fs            = require('fs');
-// var pump          = require('pump');
-// var bourbon       = require('bourbon').includePaths;
-// var split = require("split");
-// var through = require("through");
-// var duplexer = require("duplexer");
-// var through = require('through');
-// var cheerio = require('cheerio');
-
-
-// Refactored
-
 const
   gulp          = require('gulp'),
   jade          = require('gulp-jade'),
@@ -47,12 +33,12 @@ gulp.task('stylesheets', function() {
 
 gulp.task('javascripts', function() {
   return gulp.src([
+      './assets/javascripts/graph.js',
       './assets/javascripts/config.js',
-      './assets/javascripts/app.states.js',
+      './assets/javascripts/app.routes.js',
       './assets/javascripts/app.factories.js',
-      './assets/javascripts/app.js',
-      './assets/javascripts/app.components.js',
-      './assets/javascripts/graph.js'
+      './assets/javascripts/app.modules.js',
+      './assets/javascripts/components/**/*.js'
     ])
     .pipe(babel({
           presets: ['es2015']

@@ -2,8 +2,6 @@ angular
   .module('app.states', ['app.components', 'ui.router'])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    console.log('Configuring states...');
-
     $urlRouterProvider
       .otherwise('/quotes');
 

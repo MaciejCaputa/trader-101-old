@@ -1,5 +1,8 @@
 
 angular
+  .module('app.components', ['app']);
+  
+angular
   .module('app', ['app.states', 'app.factories', 'app.components'])
 
   .controller('ctrl', ['$scope', '$http', 'apiRealTimeQuotes', function($scope, $http, apiRealTimeQuotes) {
@@ -21,33 +24,31 @@ angular
 
     // Initialisation
     $scope.login = {};
-    $scope.signup = {};
-    $scope.quotes = [];
-    $scope.user = firebase.auth().currentUser;
 
-    $scope.$watch('user', function() {
-      console.info($scope.user);
-    });
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // User is signed in.
+        console.info(`User ${user.displayName} is signed in.`);
+
+        // Let's let the layout know that user is signed in.
         $scope.user = user;
 
+        // Now we get users personal data.
         firebase
           .database()
           .ref(`/users/${firebase.auth().currentUser.uid}`)
           .once('value')
           .then((snapshot) => {
+            // And we swap it with user variable
             $scope.user = snapshot.val();
+            $scope.$apply();
           })
           .then(() => {
-            console.info('--- LOG IN SUCCEEDED ---');
+            console.info('User\'s data has been pulled successfully.');
             console.info($scope.user);
           });
 
-      } else {
-        // No user is signed in.
       }
     });
 
