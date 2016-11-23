@@ -1,0 +1,62 @@
+.profit
+  color: #69F0AE
+.loss
+  color: #ff5252
+
+.ion
+  cursor: pointer
+.show-popup
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+
+
+.hide
+  position: absolute
+  top: -99999px
+  left: -99999px
+  opacity: 0
+
+
+
+// --- Layout/Font Adjustements ---
+html
+  // Base Styles
+  font-size: 11px
+  .quote
+    width: calc(100% - 1em)
+  // 20em (320px)
+  @media (min-width : 20em)
+    font-size: 12px
+    .quote
+      width: calc(50% - 1em)
+  // 30em (480px)
+  @media (min-width : 30em)
+    font-size: 13px
+    .quote
+      width: calc(33% - 1em)
+  // 37.5em (600px)
+  @media (min-width: 37.5em)
+    font-size: 13.75px
+  // 48em (768px)
+  @media (min-width : 48em)
+    font-size: 14.8px
+    .quote
+      width: calc(25% - 1em)
+  // 62.25em (992px)
+  @media (min-width : 62em)
+    font-size: 16.2px
+  // 68.75em (1100px)
+  @media (min-width : 68.75em)
+    font-size: 16.875px
+    .quote
+      width: calc(20% - 1em)
+  // 81.25em (1300px)
+  @media (min-width : 81.25em)
+    font-size: 18.125px
+
+
+// Ensuring that templates are hidden on page load
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-    ng-cloak
+  display: none !important

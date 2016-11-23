@@ -1,0 +1,27 @@
+header.app__header
+
+  .app__header__inner
+  
+    .app__header__inner__logo
+      img.app__header__inner__logo__img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/387354/stock-market-logo.png')
+      
+      h1.app__header__inner__logo__title Trader 101
+      i.app__header__inner__logo__icon.ion.ion-chevron-right
+      h2.app__header__inner__logo__subtitle {{ $ctrl.state[0].toUpperCase() + $ctrl.state.substring(1).toLowerCase() }}
+      
+    .app__header__inner__log-in(ng-show='!$ctrl.user')
+      input.app__header__inner__log-in__input(ng-model='$ctrl.login.email', type='text')
+      input.app__header__inner__log-in__input(ng-model='$ctrl.login.password', type='password')
+      button.app__header__inner__log-in__button(ng-click='$ctrl.logIn()') Log In
+      button.app__header__inner__log-in__button(ui-sref='signup') Sign Up
+      .app__header__inner__log-in__message {{ errorMessage }}
+      
+    .app__header__inner__profile(ng-show='$ctrl.user')
+    
+      .app__header__inner__profile__greeting
+        span Hi, {{ $ctrl.user.name }}!
+        br
+        span Your balance: ${{ $ctrl.user.balance }}.
+      
+      .app__header__inner__profile__avatar
+        img.app__header__inner__profile__avatar__img(ng-src='{{ $ctrl.user.avatar }}')

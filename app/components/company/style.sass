@@ -1,0 +1,46 @@
+.app__component--company
+  #visualsiation
+    max-width: 100px !important
+  &__exit
+    position: absolute
+    top: 2em
+    left: 2em
+  &__name
+  &__time-spans
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-wrap: wrap
+    &__btn
+      border: none
+      border-radius: 2px
+      height: 1.66em
+      width: 4.75em
+      margin: 0.33em
+      background: $cl-primary--2
+      box-shadow: $shadow-card
+      color: $cl-accent--2
+      cursor: pointer
+      &:hover
+        box-shadow: $shadow-card--hover
+
+  &__graph
+    display: block
+    margin: 0 auto
+    height: 300px
+    .axis
+      path, line
+        fill: none
+        stroke: $cl-accent--1
+        shape-rendering: crispEdges
+      text
+        font-size: 10px
+    .tick
+      stroke-dasharray: 1, 2
+    .bar
+      fill: FireBrick
+  &__description
+    margin: 1em auto
+    text-align: justify
+    line-height: 1.35
+    max-width: 80ch

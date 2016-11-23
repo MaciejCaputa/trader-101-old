@@ -1,0 +1,73 @@
+.app__aside
+  position: fixed
+  left: 0
+  top: 0
+  bottom : 0
+  width: 4em
+  background: #FAFAFA
+  color: rgba(0,0,0,0.54)
+  padding-top: 82px
+  z-index: 0
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
+
+  &__items
+    &__item + &__item
+      margin-top: 1em
+    &__item
+      transition: all 300ms ease-in-out
+      cursor: pointer
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      text-align: center
+      padding: 0.5em
+      position: relative
+      &:before
+        content: ''
+        position: absolute
+        bottom: 0
+        left: 50%
+        transform: translate(-50%,50%)
+        width: 66%
+        height: 1px
+        background: rgba(0,0,0,0.54)
+      &.active
+        background: #26A69A
+        color: rgba(255,255,255,0.7)
+
+      &__icon
+        font-size: 2.5em
+
+  // Styles for mobile
+  @media(max-width: 480px)
+    display: flex
+    align-items: center
+    justify-content: center
+    left: 0
+    right: 0
+    top: auto
+    bottom: 0
+    height: 48px
+    width: 100%
+    padding-top: 0
+
+    &__items
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-around
+      max-width: 300px
+      width: 100%
+      height: 100%
+      margin: 0 auto
+      &__item + &__item
+        margin-top: 0
+      &__item
+
+        height: 48px
+        width: 48px
+        &__icon
+          font-size: 2.25em
+        &:before
+          display: none

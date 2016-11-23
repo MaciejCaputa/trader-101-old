@@ -1,0 +1,74 @@
+.app
+  &__header
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    height: 4em
+    background: #00796B
+    z-index: 1
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2)
+    &__inner
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 0 1.5em
+      height: 100%
+      margin: 0 auto
+      &__logo
+        color: #FAFAFA
+        display: flex
+        align-items: center
+        height: 100%
+        &__img
+          width: 32px
+          height: 32px
+          margin-right: 1em
+        &__title,  &__subtitle
+          padding: 0
+          margin: 0
+          line-height: 1em
+          color: #FAFAFA
+        &__title
+          // , &__icon, &__subtitle
+          @media(max-width: 480px)
+            display: none
+        &__icon
+          color: rgba(255,255,255,0.7)
+          margin: auto 0.5em
+          font-size: 1.66em
+
+
+      &__log-in
+        &__input, &__button
+          border: none
+          border-radius: 2px
+          margin: 0.5em
+          padding: 2px 1ch
+          line-height: 2em
+          outline: none
+        &__input
+
+        &__button
+          cursor: pointer
+
+        &__message
+          position: absolute
+
+
+
+
+
+      &__profile
+        display: flex
+        align-items: center
+        color: rgba(255,255,255,0.7)
+        &__greeting
+          text-align: center
+        &__avatar
+          padding: 16px
+          z-index: 1
+          &__img
+            width: 32px
+            height: 32px
+            border-radius: 50%

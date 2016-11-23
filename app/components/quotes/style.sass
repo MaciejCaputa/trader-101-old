@@ -1,0 +1,196 @@
+.app__component--quotes
+
+
+  // Styling a settings bar.
+  &__settings
+    display: flex
+    align-items: center
+    justify-content: space-around
+    margin: 1.1em auto
+    flex-wrap: wrap
+
+    @media(min-width: 769px)
+      &__search__text
+        width: 110%
+    @media(max-width: 768px)
+      &__search
+        order: -1
+        margin-bottom: 1.5em
+        flex-basis: 100%
+
+
+
+
+    // Styling the layout toggle.
+    &__layout
+      font-size: 2em
+      .ion
+        padding: 0.33em
+        cursor: pointer
+      .active
+        color: white
+        background: rgba(0,0,0,0.9)
+
+
+    &__search
+      display: flex
+      align-items: center
+      justify-content: center
+      position: relative
+
+
+      &__info
+        display: block
+        color: $cl-primary--2
+        cursor: pointer
+        font-size: 2em
+        margin-right: 0.5em
+      &__info:hover + &__text
+        left: 50%
+        top: calc(100% + 1em)
+        opacity: 1
+        transform: translate(-50%)
+      &__text
+        position: absolute
+        top: -9999px
+        left: -9999px
+        opacity: 0
+        border-radius: 2px
+        background: #FAFAFA
+        box-shadow: $shadow-card
+        padding: 0.5em
+        transition: opacity 300ms ease-in-out
+        &__small
+          display: block
+      // Styling a search bar/input.
+      &__input
+        width: 200px
+        display: block
+        border: none
+        padding: 10px 0
+        border-bottom: solid 1px $cl-primary--1
+        transition: all 0.3s cubic-bezier(.64,.09,.08,1)
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, cl-primary--1 4%)
+        background-position: -200px 0
+        background-size: 200px 100%
+        background-repeat: no-repeat
+        color: darken($cl-primary--1, 20%)
+        &:focus, &:valid
+          box-shadow: none
+          outline: none
+          background-position: 0 0
+          &::-webkit-input-placeholder
+            color: $cl-primary--1
+            font-size: 11px
+            transform: translateY(-20px)
+            visibility: visible !important
+        &::-webkit-input-placeholder
+          transition: all 0.3s ease-in-out
+
+
+    // Styling the sort toogle.
+    &__sort
+      display: flex
+      align-items: center
+      flex-direction: column
+      width: 175px
+      height: 50px
+      border-radius: $border-radius-card
+      box-shadow: $shadow-card
+      .item
+        width: 100%
+        flex: 1
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+        background: $cl-primary--2
+        color: $cl-accent--2
+      .active
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+        background: $cl-accent--2
+        color: $cl-primary--2
+        border-radius: 2px
+        width: 85%
+        height: 1.25em
+      .items
+        flex: 1
+        width: 100%
+        display: flex
+        margin-top: 2px
+        .item
+          cursor: pointer
+        .item + .item
+          margin-left: 2px
+
+  &__companies
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-around
+    // Styling a layout of companies card.
+    &.menu-layout
+      .quote
+        width: 100%
+        height: auto
+        flex-direction: row
+        align-items: center
+        padding: 0.33em
+        margin: 0.33em
+        .company-name
+          font-size: 0.9em
+        .l
+          font-size: 1.33em
+        > *
+          flex: 1
+          display: flex
+          align-items: center
+          justify-content: center
+          text-align: center
+        .flex
+          flex-direction: column
+          justify-content: space-around
+    // Styling card of a company.
+    .quote
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: space-around
+      height: $height-card
+      margin: 0.5em 0
+      border-radius: $border-radius-card
+      padding: $padding-card
+      background: $cl-primary--2
+      color: $cl-accent--2
+      cursor: pointer
+      box-shadow: $shadow-card
+      transition: $transition-card
+      &:hover
+        box-shadow: $shadow-card--hover
+      .flex
+        display: flex
+        align-items: center
+        justify-content: space-around
+        width: 100%
+      .company-symbol
+        font-size: 1.5em
+      .company-name
+      .unit, .lt
+        font-size: 0.66em
+        color: $cl-accent--1
+      .lt
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+      .l
+        font-size: 2em
+      .elt
+        font-size: 0.75em
+      .rise
+        color: $cl-rise
+      .loss
+        color: $cl-loss
