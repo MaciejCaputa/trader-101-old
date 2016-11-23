@@ -22,8 +22,7 @@ angular
       getRealTimeQuotes();
     }, config.updateInterval);
 
-    // Initialisation
-    $scope.login = {};
+
 
 
     firebase.auth().onAuthStateChanged(function(user) {
@@ -51,30 +50,7 @@ angular
       }
     });
 
-    $scope.logIn = function() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword($scope.login.email, $scope.login.password)
-        .then(() => {
-          firebase
-            .database()
-            .ref(`/users/${firebase.auth().currentUser.uid}`)
-            .once('value')
-            .then((snapshot) => {
-              $scope.user = snapshot.val();
-              $scope.$apply();
-              console.info('--- LOG IN SUCCEEDED ---');
-              console.info($scope.user);
-            });
-        })
-        .catch((error) => {
-          $scope.login.errorMessage = error.message;
-          $scope.$apply();
-          console.error('--- LOG IN FAILED ---');
-          console.error(error.code);
-          console.error(error.message);
-      });
-    };
+
 
     /**
      * Evaluates student's balance.
