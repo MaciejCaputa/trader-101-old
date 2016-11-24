@@ -13,6 +13,19 @@ const
 
 
 
+var Server = require('karma').Server;
+
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+
 gulp.task('jadefiles', function() {
     return gulp.src(['./**/*.jade'])
     .pipe(jade())
@@ -33,20 +46,30 @@ gulp.task('stylesheets', function() {
 
 gulp.task('javascripts', function() {
   return gulp.src([
+      './app/libs/angular.min.js',
+      './app/libs/angular-ui-router.min.js',
+      './app/libs/angular-mocks.min.js',
+      './app/libs/jquery.min.js',
+      './app/libs/d3.min.js',
+      './app/libs/firebase-app.min.js',
+      './app/libs/firebase-auth.min.js',
+      './app/libs/firebase-database.min.js',
+
       './app/javascripts/graph.js',
       './app/javascripts/config.js',
       './app/javascripts/app.routes.js',
       './app/javascripts/app.factories.js',
       './app/javascripts/app.modules.js',
-      './app/components/**/*.js'
+      './app/components/**/component.js'
+
     ])
-    .pipe(babel({
-          presets: ['es2015']
-      }))
+    // .pipe(babel({
+    //       presets: ['es2015']
+    //   }))
     .pipe(concat('app.min.js'))
-    .pipe(gulp.dest('./_site/assets/javascripts'))
+    // .pipe(gulp.dest('./_site/assets/javascripts'))
     // .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
+    // .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./_site/assets/javascripts'));
 });
 

@@ -3,6 +3,7 @@
  */
 
 /** Firebase configuraiton and initialisation */
+
 firebase.initializeApp({
   apiKey: "AIzaSyDOI86ugqPhQf-xx13JoKsEBVohjbxHQXE",
   authDomain: "stock-market-1b03a.firebaseapp.com",

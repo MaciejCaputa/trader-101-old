@@ -18,19 +18,20 @@ angular
        */
       this.getCompany = () => {
 
-        ApiCompanyQuotes.get(this.symbol, this.timeSpan)
+        return ApiCompanyQuotes.get(this.symbol, this.timeSpan)
           .then(response => {
-            console.log('here');
+
             // Making pull data from Quandl available as this.company variable.
             this.company = response.data.dataset;
           })
-          .then(() => {
+          .then(response => {
             // Plotting the graph.
-            plotGraph( this.company.data );
-          })
-          .catch(error => {
-            console.error(error);
+            plotGraph( this.company );
+
           });
+          // .catch(error => {
+          //   console.error(error);
+          // });
 
       };
 
