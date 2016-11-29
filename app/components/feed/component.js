@@ -14,24 +14,27 @@ angular
       //    });
 
 
+
       var req = {
        method: 'GET',
        url: 'https://www.google.com/finance/market_news?output=json',
        transformRequest: angular.identity,
-transformResponse: angular.identity,
-      //  transformResponse: function(response) {
-      //   //  console.log(response.toString());
-      //   console.log(JSON.parse(response));
-      //    return JSON.stringify(response);
-      //    return response.toString();
-      //  },
-       headers: {
-         'Content-Type': undefined
+      //  transformResponse: angular.identity
+       transformResponse: function(response) {
+         console.log(response);
+         return response;
        }
+      //  headers: {
+      //   'Access-Control-Allow-Credentials': 'true',
+      //   'Access-Control-Allow-Origin': '*',
+      //   'Access-Control-Allow-Headers': 'origin, content-type, accept'
+      //  }
      };
 
      $http(req)
-      .then(response => {
+      .then((response, status, header, config) => {
+        console.log('Status', response.status);
+        console.log('Headers', response.headers());
         return response.data;
       })
       .then(data => {
