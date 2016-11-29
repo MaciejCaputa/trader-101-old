@@ -6,10 +6,15 @@ html(lang='en')
     link(rel='manifest', href='/manifest.webmanifest')
     link(rel='stylesheet', href='assets/stylesheets/main.min.css')
     title Trader 101
+    
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-dark.min.css')
+    script(async, src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js')
+
+    
   body.app(ng-app='app', ng-controller='ctrl', ng-cloak)
   
     // Permnanet Conponents
-    trader-header(user='user')
+    trader-header(ng-cloak, user='user')
     trader-aside
 
     // View Conponent

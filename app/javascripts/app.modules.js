@@ -46,6 +46,7 @@ angular
           .then(() => {
             console.info('User\'s data has been pulled successfully.');
             console.info($scope.user);
+            hljs.initHighlightingOnLoad();
           });
       }
     });

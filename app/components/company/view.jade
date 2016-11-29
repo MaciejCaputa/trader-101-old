@@ -1,13 +1,12 @@
 // Component Company
 .app__component.app__component--company
-  // Exit button from a graph modal.
-  i.app__component--company__exit.ion.ion-close(ng-click='$ctrl.company=null')
 
+  
   // Title of a graph.
   h2.app__component--company__name {{ $ctrl.company.name }}
 
   // Choosing time span of a graph.
-  .app__component--company__time-spans
+  .app__component--company__time-spans(ng-show='$ctrl.company')
     button.app__component--company__time-spans__btn(ng-click='$ctrl.timeSpan=7; $ctrl.getCompany()') Week
     button.app__component--company__time-spans__btn(ng-click='$ctrl.timeSpan=31; $ctrl.getCompany()') Month
     button.app__component--company__time-spans__btn(ng-click='$ctrl.timeSpan=62; $ctrl.getCompany()') 2 Months
@@ -22,3 +21,5 @@
 
   // Brief description of a company
   p.app__component--company__description {{ $ctrl.company.description }}
+
+  i.ion.ion-load-c.loader(ng-show='!$ctrl.company') 

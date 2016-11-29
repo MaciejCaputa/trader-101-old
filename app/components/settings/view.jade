@@ -1,4 +1,7 @@
 // Component Settings
 .app__component.app__component--settings
-  small Settings
-  pre {{ $ctrl.user | json }}
+
+  pre
+    code.hljs.json USER = {{ $ctrl.user | json }}
+
+  

@@ -44,3 +44,29 @@
     text-align: justify
     line-height: 1.35
     max-width: 80ch
+
+
+.loader
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%)
+  font-size: 5em
+  color: $blue-500
+  animation: loader 1s linear infinite
+
+
+@keyframes loader
+  from
+    -ms-transform: rotate(0deg)
+    -moz-transform: rotate(0deg)
+    -webkit-transform: rotate(0deg)
+    -o-transform: rotate(0deg)
+    transform: rotate(0deg)
+
+  to
+    -ms-transform: rotate(360deg)
+    -moz-transform: rotate(360deg)
+    -webkit-transform: rotate(360deg)
+    -o-transform: rotate(360deg)
+    transform: rotate(360deg)

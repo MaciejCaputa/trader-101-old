@@ -6,6 +6,11 @@ angular
     },
     templateUrl: 'app/components/settings/view.html',
     controller: function() {
+      console.log('highlight');
+      // hljs.initHighlightingOnLoad();
+      // setTimeout(function () {
+      //   hljs.initHighlightingOnLoad();
+      // }, 4000);
 
     }
   });
