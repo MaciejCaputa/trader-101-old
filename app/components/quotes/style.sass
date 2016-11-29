@@ -130,7 +130,8 @@
     display: flex
     flex-wrap: wrap
     align-items: center
-    justify-content: space-around
+    // justify-content: space-around
+    justify-content: center
     // Styling a layout of companies card.
     &.menu-layout
       .quote
@@ -139,7 +140,7 @@
         flex-direction: row
         align-items: center
         padding: 0.33em
-        margin: 0.33em
+        // margin: 0.33em
         .company-name
           font-size: 0.9em
         .l
@@ -160,16 +161,20 @@
       align-items: flex-start
       justify-content: space-around
       height: $height-card
-      margin: 0.5em 0
-      border-radius: $border-radius-card
-      padding: $padding-card
+      // margin: 0.5em 0
+      // border-radius: $border-radius-card
+      padding: 0.54em
       background: $cl-primary--2
+      // background: $blue-grey-700
       color: $cl-accent--2
       cursor: pointer
-      box-shadow: $shadow-card
+      // box-shadow: $shadow-card
       transition: $transition-card
+      border: 1px solid rgba(0,0,0,0.2)
+
       &:hover
-        box-shadow: $shadow-card--hover
+        // box-shadow: $shadow-card--hover
+        // z-index: 1
       .flex
         display: flex
         align-items: center

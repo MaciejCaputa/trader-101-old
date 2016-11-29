@@ -13,4 +13,15 @@
       p If you had invested <strong>$1000</strong> in <strong>GOOG</strong> <em>a week ago</em>.
       p Today you would be <strong>$54</strong> richer.
 
-    //- .app__component--feed__news News
+  .app__component--feed__news
+    
+    
+    .app__component--feed__news__page(ng-repeat='page in $ctrl.news')
+      .app__component--feed__news__page__card(ng-repeat='news in page.a')
+        h3.app__component--feed__news__page__card__header(ng-bind='news.t')
+        p.app__component--feed__news__page__card__paragraph(ng-bind='news.sp')
+        .app__component--feed__news__page__card__footer
+          a.app__component--feed__news__page__card__footer__read-more(ng-href='{{news.u}}') Read More
+          small.app__component--feed__news__page__card__footer__timestamp {{ news.s }} - {{ news.d }}
+
+    

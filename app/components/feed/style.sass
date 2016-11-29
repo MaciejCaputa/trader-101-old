@@ -1,0 +1,36 @@
+.app__component--feed
+
+  &__news
+    &__page
+      display: flex
+      flex-wrap: wrap
+      margin: 2em auto
+
+      &__card
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        // min-width: 40ch
+        // max-width: 60ch
+        text-align: left
+        margin: 0 auto
+        padding: 0.87em
+        box-shadow: $box-shadow
+        background: $grey-50
+        flex-basis: 50%
+
+        &__header
+          margin: 0
+
+        &__paragraph
+          margin: 0.54em auto
+
+        &__footer
+          display: flex
+          align-items: center
+          justify-content: space-between
+          margin-top: 0.54em
+
+          &__read-more
+            text-transform: uppercase
+            text-decoration: none

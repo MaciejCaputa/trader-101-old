@@ -25,17 +25,17 @@ html
   // Base Styles
   font-size: 11px
   .quote
-    width: calc(100% - 1em)
+      flex-basis: 100%
   // 20em (320px)
   @media (min-width : 20em)
     font-size: 12px
     .quote
-      width: calc(50% - 1em)
+      flex-basis: 50%
   // 30em (480px)
   @media (min-width : 30em)
     font-size: 13px
     .quote
-      width: calc(33% - 1em)
+      flex-basis: 33%
   // 37.5em (600px)
   @media (min-width: 37.5em)
     font-size: 13.75px
@@ -43,7 +43,7 @@ html
   @media (min-width : 48em)
     font-size: 14.8px
     .quote
-      width: calc(25% - 1em)
+      flex-basis: 25%
   // 62.25em (992px)
   @media (min-width : 62em)
     font-size: 16.2px
@@ -51,7 +51,7 @@ html
   @media (min-width : 68.75em)
     font-size: 16.875px
     .quote
-      width: calc(20% - 1em)
+      flex-basis: 20%
   // 81.25em (1300px)
   @media (min-width : 81.25em)
     font-size: 18.125px
