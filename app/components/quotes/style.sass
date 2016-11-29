@@ -56,7 +56,7 @@
         left: -9999px
         opacity: 0
         border-radius: 2px
-        background: #FAFAFA
+        // background: #FAFAFA
         box-shadow: $shadow-card
         padding: 0.5em
         transition: opacity 300ms ease-in-out
@@ -70,11 +70,12 @@
         padding: 10px 0
         border-bottom: solid 1px $cl-primary--1
         transition: all 0.3s cubic-bezier(.64,.09,.08,1)
-        background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, cl-primary--1 4%)
+        // background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, cl-primary--1 4%)
         background-position: -200px 0
         background-size: 200px 100%
         background-repeat: no-repeat
         color: darken($cl-primary--1, 20%)
+        background: inherit
         &:focus, &:valid
           box-shadow: none
           outline: none
@@ -140,6 +141,7 @@
         flex-direction: row
         align-items: center
         padding: 0.33em
+        flex-basis: 100%
         // margin: 0.33em
         .company-name
           font-size: 0.9em

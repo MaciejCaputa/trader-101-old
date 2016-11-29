@@ -1,7 +1,7 @@
 .app__component.app__component--porfolio
 
-  h3.app__component__subtitle(ng-show='$ctrl.user.transactions.open[0]') Open Transactions
   table.app__component--portfolio__transactions(ng-show='$ctrl.user.transactions.open[0]')
+    caption Open Transactions
     tr.app__component--portfolio__transactions__transaction(ng-init='openSort = "symbol"')
       th(ng-click='openSort = openSort == "symbol" ? "-symbol" : "symbol"')
         i.ion.ion-arrow-down-a(ng-show='openSort == "symbol"')

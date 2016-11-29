@@ -2,7 +2,10 @@
 .app__component.app__component--feed
 
   .app__component--feed__cards
-    .app__component--feed__cards__card Suggested Investment
+    .app__component--feed__cards__card
+      .app__component--feed__cards__card__graph
+        img.app__component--feed__cards__card__graph__img(src='https://www.google.co.uk/finance/chart?cht=c&q=INDEXFTSE:UKX,INDEXFTSE:MCX,INDEXFTSE:ASX,INDEXFTSE:T1X&tlf=24h&ei=eY09WJGsNcjQUqv6urgM')
+        
     .app__component--feed__cards__favorites
       .app__component--feed__cards__favorites__favorite Favorite 1
       .app__component--feed__cards__favorites__favorite Favorite 2
@@ -15,13 +18,16 @@
 
   .app__component--feed__news
     
-    
-    .app__component--feed__news__page(ng-repeat='page in $ctrl.news')
-      .app__component--feed__news__page__card(ng-repeat='news in page.a')
-        h3.app__component--feed__news__page__card__header(ng-bind='news.t')
-        p.app__component--feed__news__page__card__paragraph(ng-bind='news.sp')
-        .app__component--feed__news__page__card__footer
-          a.app__component--feed__news__page__card__footer__read-more(ng-href='{{news.u}}') Read More
-          small.app__component--feed__news__page__card__footer__timestamp {{ news.s }} - {{ news.d }}
-
-    
+    .app__component--feed__news__card(ng-repeat='page in $ctrl.news')
+      div(ng-repeat='news in page.a | limitTo : 3')
+      
+        h3.app__component--feed__news__card__header(ng-show='!$index')
+          a.app__component--feed__news__page__card__footer__read-more(ng-href='{{news.u}}') {{ news.t }}
+        
+        small.app__component--feed__news__card__source(ng-show='!$index') {{ news.s }} - {{ news.d }}
+          
+        p.app__component--feed__news__card__paragraph(ng-show='!$index') {{ news.sp }}
+        
+        p.app__component--feed__news__card__subheader(ng-show='$index')
+          a.app__component--feed__news__page__card__footer__read-more(ng-href='{{news.u}}') {{ news.t }}
+          small  {{ news.s }}

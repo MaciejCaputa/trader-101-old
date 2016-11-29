@@ -3,7 +3,7 @@
   margin: 0 auto
   margin-top: 4em
   margin-left: 4em
-  background: $grey-100
+
   &__title
     text-align: center
   &__lead
@@ -14,54 +14,3 @@
       display: block
   @media(max-width: 480px)
     margin-left: 0
-
-  &--feed
-    &__cards
-      display: flex
-      height: 20em
-      width: 100%
-      &--tip
-        height: 10em
-      &__card
-        flex: 1
-        display: flex
-        align-items: center
-        justify-content: center
-        margin: 0.5em
-        cursor: pointer
-        border-radius: $border-radius-card
-        padding: $padding-card
-        background: $cl-primary--2
-        color: $cl-accent--2
-        box-shadow: $shadow-card
-        transition: $transition-card
-        &:hover
-          box-shadow: $shadow-card--hover
-        &--tip
-          font-size: 2em
-          flex-direction: column
-          margin: 0.25em
-
-      &__favorites
-        flex: 1
-        display: flex
-        flex-direction: column
-        &__favorite
-          flex: 1
-          display: flex
-          align-items: center
-          justify-content: center
-          margin: 0.5em
-          cursor: pointer
-          border-radius: $border-radius-card
-          padding: $padding-card
-          background: $cl-primary--2
-          color: $cl-accent--2
-          box-shadow: $shadow-card
-          transition: $transition-card
-          &:hover
-            box-shadow: $shadow-card--hover
-
-    &__news
-      margin: 2em auto
-      text-align: center

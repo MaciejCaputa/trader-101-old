@@ -1,36 +1,101 @@
 .app__component--feed
 
-  &__news
-    &__page
+  &__cards
+    display: flex
+    height: 20em
+    width: 100%
+    box-shadow: $shadow-card
+    &--tip
+      height: 10em
+    &__card
+      flex: 1
       display: flex
-      flex-wrap: wrap
-      margin: 2em auto
+      align-items: center
+      justify-content: center
+      border: 1px solid rgba(0,0,0,0.2)
+      // margin: 0.5em
+      cursor: pointer
+      // border-radius: $border-radius-card
+      padding: $padding-card
+      background: $cl-primary--2
+      color: $cl-accent--2
 
-      &__card
-        display: flex
-        flex-direction: column
-        justify-content: space-between
-        // min-width: 40ch
-        // max-width: 60ch
-        text-align: left
-        margin: 0 auto
-        padding: 0.87em
+      transition: $transition-card
+
+      &__graph
+        padding: 1.25em
+        background: #FFF
         box-shadow: $box-shadow
-        background: $grey-50
-        flex-basis: 50%
+        &__img
+          // border: 1px solid red
 
-        &__header
-          margin: 0
+      &:hover
+        // box-shadow: $shadow-card--hover
+      &--tip
+        font-size: 2em
+        flex-direction: column
+        border: 1px solid rgba(0,0,0,0.2)
+        background: $cl-primary--2
+        // margin: 0.25em
 
-        &__paragraph
-          margin: 0.54em auto
+    &__favorites
+      flex: 1
+      display: flex
+      flex-direction: column
+      &__favorite
+        flex: 1
+        display: flex
+        align-items: center
+        justify-content: center
+        // margin: 0.5em
+        cursor: pointer
+        // border-radius: $border-radius-card
+        padding: $padding-card
+        background: $cl-primary--2
+        color: $cl-accent--2
+        box-shadow: $shadow-card
+        transition: $transition-card
+        border: 1px solid rgba(0,0,0,0.2)
+        &:hover
+          // box-shadow: $shadow-card--hover
 
-        &__footer
-          display: flex
-          align-items: center
-          justify-content: space-between
-          margin-top: 0.54em
+  &__news
+    display: flex
+    flex-wrap: wrap
+    margin: 1.5em auto
+    box-shadow: $box-shadow
 
-          &__read-more
-            text-transform: uppercase
-            text-decoration: none
+    &__card
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      // min-width: 40ch
+      // max-width: 60ch
+      text-align: left
+      margin: 0 auto
+      padding: 0.87em
+      // box-shadow: $box-shadow
+      background: $grey-50
+      flex-basis: 50%
+      border: 1px solid rgba(0,0,0,0.2)
+
+      &__header
+        margin: 0
+
+      &__source
+        display: block
+        margin-top: 0.54em
+
+      &__paragraph
+        margin-top: 0.54em
+        color: rgba(0,0,0,0.87)
+
+      &__subheader
+        margin-top: 0.54em
+        color: rgba(0,0,0,0.54)
+
+      a
+        color: $blue-900
+        text-decoration: none
+        &:hover
+          text-decoration: underline
