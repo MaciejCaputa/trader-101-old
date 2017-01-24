@@ -36,7 +36,6 @@ gulp.task('stylesheets', function() {
   return gulp.src(['./app/stylesheets/main.sass'])
   .pipe(sass({
       includePaths: [bourbon]//,
-      // onError: browserSync.notify
   }))
   .pipe(cssmin())
   .pipe(rename({suffix: '.min'}))

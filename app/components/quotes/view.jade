@@ -36,6 +36,9 @@
     //- .quote(ng-repeat='quote in $ctrl.quotes | filter : $ctrl.search | orderBy : $ctrl.sort track by $index', ng-click='$ctrl.getCompany(quote.symbol)')
     .quote(ng-repeat='quote in $ctrl.quotes | filter : $ctrl.search | orderBy : $ctrl.sort track by $index', ui-sref='company({symbol: quote.symbol})')
       
+      .favourite
+        .ion.ion-ios-star-outline(ng-show='!quote.favourite', ng-click='quote.favourite = true')
+        .ion.ion-ios-star(ng-show='quote.favourite')
       
       // Compnay's stock code.
       .company-symbol.t {{ quote.symbol }} 

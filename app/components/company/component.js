@@ -6,7 +6,21 @@ angular
       symbol: '@'
     },
     templateUrl: 'app/components/company/view.html',
-    controller: function(ApiCompanyQuotes) {
+    controller: function(ApiCompanyQuotes, CompanyNews) {
+
+
+
+
+      CompanyNews.get(this.symbol)
+        .then(res => {
+
+          // Making pull data from Quandl available as this.company variable.
+          this.news = res;
+          console.log(this.news);
+
+        });
+
+
 
       // Time span defaults to one year.
       this.timeSpan = 366;

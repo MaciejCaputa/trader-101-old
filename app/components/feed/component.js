@@ -8,44 +8,40 @@ angular
     templateUrl: 'app/components/feed/view.html',
     controller: function($http) {
 
-      // $http.jsonp(`https://finance.google.com/finance/info?client=ig&q=${query}&callback=JSON_CALLBACK`)
-      //  .then(function(response) {
-      //     console.log(respnse);
-      //    });
+      //
+      // $.ajax({
+      //     // url: 'https://www.google.com/finance/info?q=NASDAQ:AAPL',
+      //     url: 'https://www.google.com/finance/market_news?output=rs',
+      //     // data: {
+      //     //     q: 'NASDAQ:AAPL',
+      //     //     infotype: "infoquoteall"
+      //     // },
+      //     dataType: "json",
+      //     cache: true,
+      //     success: function(response) {
+      //       console.log('response');
+      //       console.log(response);
+      //     },
+      //     error: function(response) {
+      //       console.log(response);
+      //     }
+      // });
 
 
+    delete $http.defaults.headers.common['X-Requested-With'];
 
-      var req = {
-       method: 'GET',
-       url: 'https://www.google.com/finance/market_news?output=json',
-       transformRequest: angular.identity,
-      //  transformResponse: angular.identity
-       transformResponse: function(response) {
-         console.log(response);
-         return response;
-       }
-      //  headers: {
-      //   'Access-Control-Allow-Credentials': 'true',
-      //   'Access-Control-Allow-Origin': '*',
-      //   'Access-Control-Allow-Headers': 'origin, content-type, accept'
-      //  }
-     };
-
-     $http(req)
-      .then((response, status, header, config) => {
-        console.log('Status', response.status);
-        console.log('Headers', response.headers());
-        return response.data;
+    $http({
+        method: 'GET',
+        url: 'https://www.google.com/finance/market_news?output=json',
+        transformRequest: angular.identity,
+        transformResponse: angular.identity
       })
+      .then(response => response.data)
       .then(data => {
-
-
         let myRegexp, match;
         do {
           myRegexp = /({|,)(\w+):/g;
           match = myRegexp.exec(data);
-          // console.log(match[0]); // abc
-          // console.log(match);
           if (match) {
             data = data.replace(match[0], `${match[1]}"${match[2]}":`);
           }

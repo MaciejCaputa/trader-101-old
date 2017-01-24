@@ -49,6 +49,7 @@ angular
 
       return $http.jsonp(`https://finance.google.com/finance/info?client=ig&q=${query}&callback=JSON_CALLBACK`)
         .then(function(response) {
+          console.log(response.data[0]);
           return response.data.map(quote => ({
 
                 symbol: quote.t,
@@ -109,6 +110,46 @@ angular
               column_index: 4,
               collapse: collapse
             }
+          })
+        );
+      }
+    };
+  }])
+
+  .factory('CompanyNews', ['$http', function CompanyNewsFactory($http) {
+    return {
+      get(symbol) {
+        const COMPANY_NEWS_URL = 'https://www.google.com/finance/company_news';
+
+        return (
+          $http({
+            method: 'GET',
+            url: COMPANY_NEWS_URL,
+            transformRequest: angular.identity,
+            transformResponse: angular.identity,
+            params: {
+              q: symbol,
+              output: 'json'
+            }
+          })
+          .then(res => res.data)
+          .then(data => {
+            let myRegexp, match;
+            do {
+              myRegexp = /({|,)(\w+):/g;
+              match = myRegexp.exec(data);
+              if (match) {
+                data = data.replace(match[0], `${match[1]}"${match[2]}":`);
+              }
+
+            } while(match);
+
+
+            while(data.indexOf('#39;') > -1) {
+              data = data.replace('\\u0026#39;', '\'');
+            }
+
+            return JSON.parse( data ).clusters;
           })
         );
       }
