@@ -28,7 +28,7 @@ gulp.task('test', function (done) {
 
 gulp.task('jadefiles', function() {
     return gulp.src(['./**/*.jade'])
-    .pipe(jade())
+    .pipe(jade({pretty: true}))
     .pipe(gulp.dest('_site/'));
 });
 
@@ -37,7 +37,7 @@ gulp.task('stylesheets', function() {
   .pipe(sass({
       includePaths: [bourbon]//,
   }))
-  .pipe(cssmin())
+  // .pipe(cssmin())
   .pipe(rename({suffix: '.min'}))
   .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
   .pipe(gulp.dest('./_site/assets/stylesheets'));

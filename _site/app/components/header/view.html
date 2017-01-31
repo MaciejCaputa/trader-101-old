@@ -1,1 +1,19 @@
-<header class="app__header"><div class="app__header__inner"><div ui-sref="quotes" class="app__header__inner__logo"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/387354/stock-market-logo.png" class="app__header__inner__logo__img"/><h1 class="app__header__inner__logo__title">Trader 101</h1></div><div ng-show="!$ctrl.user" class="app__header__inner__log-in"><input ng-model="$ctrl.login.email" type="text" class="app__header__inner__log-in__input"/><input ng-model="$ctrl.login.password" type="password" class="app__header__inner__log-in__input"/><button ng-click="$ctrl.logIn()" class="app__header__inner__log-in__button">Log In</button><button ui-sref="signup" class="app__header__inner__log-in__button">Sign Up</button><div class="app__header__inner__log-in__message">{{ errorMessage }}</div></div><div ng-show="$ctrl.user" class="app__header__inner__profile"><div class="app__header__inner__profile__greeting"><span>Hi, {{ $ctrl.user.name }}!</span><br/><span>Your balance: ${{ $ctrl.user.balance }}.</span></div><div class="app__header__inner__profile__avatar"><img ng-src="{{ $ctrl.user.avatar }}" class="app__header__inner__profile__avatar__img"/></div></div></div></header>
+
+<header class="app__header">
+  <div class="app__header__inner">
+    <div ui-sref="quotes" class="app__header__inner__logo"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/387354/stock-market-logo.png" class="app__header__inner__logo__img"/>
+      <h1 class="app__header__inner__logo__title">Trader 101</h1>
+    </div>
+    <div ng-show="!$ctrl.user" class="app__header__inner__log-in">
+      <input ng-model="$ctrl.login.email" type="text" class="app__header__inner__log-in__input"/>
+      <input ng-model="$ctrl.login.password" type="password" class="app__header__inner__log-in__input"/>
+      <button ng-click="$ctrl.logIn()" class="app__header__inner__log-in__button">Log In</button>
+      <button ui-sref="signup" class="app__header__inner__log-in__button">Sign Up</button>
+      <div class="app__header__inner__log-in__message">{{ errorMessage }}</div>
+    </div>
+    <div ng-show="$ctrl.user" class="app__header__inner__profile">
+      <div class="app__header__inner__profile__greeting"><span>Hi, {{ $ctrl.user.name }}!</span><br/><span>Your balance: ${{ $ctrl.user.balance }}.</span></div>
+      <div class="app__header__inner__profile__avatar"><img ng-src="{{ $ctrl.user.avatar }}" class="app__header__inner__profile__avatar__img"/></div>
+    </div>
+  </div>
+</header>

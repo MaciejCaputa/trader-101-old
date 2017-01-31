@@ -1,1 +1,29 @@
-<!-- Component Feed--><div class="app__component app__component--feed"><div class="app__component--feed__cards"><div class="app__component--feed__cards__card"><div class="app__component--feed__cards__card__graph"><img src="https://www.google.co.uk/finance/chart?cht=c&amp;q=INDEXFTSE:UKX,INDEXFTSE:MCX,INDEXFTSE:ASX,INDEXFTSE:T1X&amp;tlf=24h&amp;ei=eY09WJGsNcjQUqv6urgM" class="app__component--feed__cards__card__graph__img"/></div></div><div class="app__component--feed__cards__favorites"><div class="app__component--feed__cards__favorites__favorite">Favorite 1</div><div class="app__component--feed__cards__favorites__favorite">Favorite 2</div><div class="app__component--feed__cards__favorites__favorite">Favorite 3</div></div></div><div class="app__component--feed__cards app__component--feed__cards--tip"><div class="app__component--feed__cards__card app__component--feed__cards__card--tip"><p>If you had invested <strong>$1000</strong> in <strong>GOOG</strong> <em>a week ago</em>.</p><p>Today you would be <strong>$54</strong> richer.</p></div></div><div class="app__component--feed__news"><div ng-repeat="page in $ctrl.news" class="app__component--feed__news__card"><div ng-repeat="news in page.a | limitTo : 3"><h3 ng-show="!$index" class="app__component--feed__news__card__header"><a ng-href="{{news.u}}" class="app__component--feed__news__page__card__footer__read-more">{{ news.t }}</a></h3><small ng-show="!$index" class="app__component--feed__news__card__source">{{ news.s }} - {{ news.d }}</small><p ng-show="!$index" class="app__component--feed__news__card__paragraph">{{ news.sp }}</p><p ng-show="$index" class="app__component--feed__news__card__subheader"><a ng-href="{{news.u}}" class="app__component--feed__news__page__card__footer__read-more">{{ news.t }}</a><small> {{ news.s }}</small></p></div></div></div></div>
+
+<!-- Component Feed-->
+<div class="app__component app__component--feed">
+  <div class="app__component--feed__cards">
+    <div class="app__component--feed__cards__card">
+      <div class="app__component--feed__cards__card__graph"><img src="https://www.google.co.uk/finance/chart?cht=c&amp;q=INDEXFTSE:UKX,INDEXFTSE:MCX,INDEXFTSE:ASX,INDEXFTSE:T1X&amp;tlf=24h&amp;ei=eY09WJGsNcjQUqv6urgM" class="app__component--feed__cards__card__graph__img"/></div>
+    </div>
+    <div class="app__component--feed__cards__favorites">
+      <div class="app__component--feed__cards__favorites__favorite">Favorite 1</div>
+      <div class="app__component--feed__cards__favorites__favorite">Favorite 2</div>
+      <div class="app__component--feed__cards__favorites__favorite">Favorite 3</div>
+    </div>
+  </div>
+  <div class="app__component--feed__cards app__component--feed__cards--tip">
+    <div class="app__component--feed__cards__card app__component--feed__cards__card--tip">
+      <p>If you had invested <strong>$1000</strong> in <strong>GOOG</strong> <em>a week ago</em>.</p>
+      <p>Today you would be <strong>$54</strong> richer.</p>
+    </div>
+  </div>
+  <div class="app__component--feed__news">
+    <div ng-repeat="page in $ctrl.news" class="app__component--feed__news__card">
+      <div ng-repeat="news in page.a | limitTo : 3">
+        <h3 ng-show="!$index" class="app__component--feed__news__card__header"><a ng-href="{{news.u}}" class="app__component--feed__news__page__card__footer__read-more">{{ news.t }}</a></h3><small ng-show="!$index" class="app__component--feed__news__card__source">{{ news.s }} - {{ news.d }}</small>
+        <p ng-show="!$index" class="app__component--feed__news__card__paragraph">{{ news.sp }}</p>
+        <p ng-show="$index" class="app__component--feed__news__card__subheader"><a ng-href="{{news.u}}" class="app__component--feed__news__page__card__footer__read-more">{{ news.t }}</a><small> {{ news.s }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
